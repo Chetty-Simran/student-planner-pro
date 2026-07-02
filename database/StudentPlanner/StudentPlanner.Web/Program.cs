@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using StudentPlanner.Web.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<StudentPlannerDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
